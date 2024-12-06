@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Nastja Loves Vadim</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            text-align: center;
+            background: linear-gradient(to bottom, #f0f8ff, #e6f7ff);
+            font-family: 'Roboto', sans-serif;
+            overflow: hidden;
+            transition: background 2s ease;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 50px;
+            background-color: rgba(255, 255, 255, 0.95);
+            box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.15);
+            border-radius: 15px;
+            animation: fadeInContainer 1.5s ease-out;
+        }
+        #intro {
+            font-size: 28px;
+            font-weight: 400;
+            font-family: 'Playfair Display', serif;
+            color: #444;
+            margin-bottom: 30px;
+            opacity: 0;
+            animation: fadeInText 2s ease forwards;
+        }
+        #question {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #2e2e2e;
+            opacity: 0;
+            animation: fadeInQuestion 2.5s ease forwards;
+        }
+        #button-container {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            opacity: 0;
+            animation: fadeInButtons 3s ease forwards;
+        }
+        .button {
+            font-size: 20px;
+            font-weight: 700;
+            padding: 15px 30px;
+            margin: 10px;
+            cursor: pointer;
+            background: linear-gradient(to right, #ff6b6b, #f06595);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.4s;
+        }
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 8px 20px rgba(0, 0, 0, 0.2);
+            background: linear-gradient(to right, #e63946, #d62839);
+        }
+        #counter {
+            font-size: 22px;
+            margin-top: 30px;
+            color: #444;
+            opacity: 0;
+            animation: fadeInCounter 3.5s ease forwards;
+        }
+        #progress-container {
+            margin-top: 20px;
+            opacity: 0;
+            animation: fadeInProgress 4s ease forwards;
+        }
+        #progress-bar {
+            width: 80%;
+            height: 20px;
+            margin: 10px auto;
+            border-radius: 10px;
+            overflow: hidden;
+            -webkit-appearance: none;
+            appearance: none;
+        }
+        #progress-bar::-webkit-progress-bar {
+            background: #e0e0e0;
+        }
+        #progress-bar::-webkit-progress-value {
+            background: linear-gradient(to right, #f06595, #ff6b6b);
+        }
+        #final-message {
+            font-size: 36px;
+            font-weight: 700;
+            color: #ff69b4;
+            margin-top: 40px;
+            display: none;
+            animation: fadeIn 2s ease, pulse 2s infinite alternate;
+        }
+        #photo-container {
+            margin-top: 30px;
+            display: none;
+        }
+        .photo {
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+            border-radius: 15px;
+            box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.15);
+        }
+        #share-button {
+            display: none;
+            margin-top: 20px;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: 700;
+            cursor: pointer;
+            background: #ff69b4;
+            color: #ffffff;
+            border: none;
+            border-radius: 20px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        #share-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0px 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        @keyframes fadeInContainer {
+            0% { transform: scale(0.8); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        @keyframes fadeInText {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes fadeInQuestion {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes fadeInButtons {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes fadeInCounter {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes fadeInProgress {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes fadeIn {
+            0% { opacity: 0; }
+            100% { opacity: 1; }
+        }
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.05); }
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
+</head>
+<body>
+    <div id="container">
+        <div id="intro">Once upon a time, there was a love so strong that nothing could break it. This is the story of Nastja's love for Vadim, and today, we celebrate it together.</div>
+        <div id="question">Does Nastja love Vadim?</div>
+        <div id="button-container">
+            <button class="button" onclick="handleClick()">Absolutely Yes</button>
+            <button class="button" onclick="handleClick()">Of Course Yes</button>
+        </div>
+        <div id="counter">10 clicks remaining</div>
+        <div id="progress-container">
+            <progress id="progress-bar" value="0" max="10"></progress>
+        </div>
+        <div id="final-message">VADIM LOVES NASTJA!</div>
+        <div id="photo-container">
+            <img src="together.jpg" alt="Nastja and Vadim Together" class="photo">
+        </div>
+        <button id="share-button" onclick="shareLove()">Share the Love</button>
+    </div>
+
+    <audio id="click-sound" src="click.mp3" preload="auto"></audio>
+    <audio id="celebration-sound" src="celebrate.mp3" preload="auto"></audio>
+    <audio id="background-music" src="my-heart-will-go-on.mp3" preload="auto" loop></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
